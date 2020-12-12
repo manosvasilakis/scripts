@@ -1,0 +1,8 @@
+#!/bin/sh
+
+theme=$(ls $XDG_CONFIG_HOME/x11/Xresources-themes | shuf -n 1)
+
+rm -rf "$XDG_CONFIG_HOME/x11/xresources"
+ln -s "$XDG_CONFIG_HOME/x11/Xresources-themes/$theme" $XDG_CONFIG_HOME/x11/xresources
+
+xrdb /home/manos/.config/x11/xresources

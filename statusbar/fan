@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo ⭕$(cat /proc/acpi/ibm/fan | awk '/speed/ {print($2" RPM")}')

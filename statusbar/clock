@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ $(( $(date "+%S") % 2 )) -eq 0 ]
+then
+	echo 📅$(date "+%a %d %b %Y 🕐%H:%M")
+else
+	echo 📅$(date "+%a %d %b %Y 🕐%H %M")
+fi

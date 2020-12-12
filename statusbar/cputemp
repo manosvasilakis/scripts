@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo 💻$(cat /proc/acpi/ibm/thermal | awk '{printf($2"°C")}')

@@ -1,0 +1,17 @@
+#!/bin/env sh
+
+# cpu=$()
+# mem=$()
+cpu_temp=$(cat /proc/acpi/ibm/thermal | awk '{printf($2"°C")}')
+fan_speed=$(cat /proc/acpi/ibm/fan | awk '/speed/ {print($2" RPM")}')
+root_vol=$(df -h / | awk 'END {printf($5)}')
+home_vol=$(df -h /home | awk 'END {printf($5)}')
+media_vol=$(df -h /media | awk 'END {printf($5)}')
+vol=$(amixer sget Master| awk '/dB/ {print($4)}')
+bat=$(cat /sys/class/power_supply/BAT0/capacity | awk 'END {print($1"%")}')
+# uptime=$()
+date=$(date "+%a %d %b %Y %H:%M")
+taskbar_info=$(echo 💻$cpu_temp ⭕$fan_speed 💽[$root_vol $home_vol $media_vol] 🔉$vol 🔋[$bat] [$(nettraf)] $date)
+# taskbar_info=$(echo 🔋[$bat])
+
+xsetroot -name "$taskbar_info"
