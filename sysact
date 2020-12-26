@@ -8,10 +8,18 @@ case "$(readlink -f /sbin/init)" in
 	*openrc*) reb="sudo -A openrc-shutdown -r"; shut="sudo -A openrc-shutdown -p" ;;
 esac
 
+# cmds="\
+# 🔒 lock		slock
+# 🚪 leave dwm	kill -TERM $(pgrep -u $USER "\bdwm$")
+# ♻ renew dwm	kill -HUP $(pgrep -u $USER "\bdwm$")
+# 🐻 hibernate	slock ${hib:-systemctl suspend-then-hibernate -i}
+# 🔃 reboot	${reb:-sudo -A reboot}
+# 🖥 shutdown	${shut:-sudo -A shutdown -h now}"
+
 cmds="\
 🔒 lock		slock
-🚪 leave dwm	kill -TERM $(pgrep -u $USER "\bdwm$")
-♻ renew dwm	kill -HUP $(pgrep -u $USER "\bdwm$")
+🚪 leave dwm	kill -9 -1
+♻ renew dwm	killall dwm
 🐻 hibernate	slock ${hib:-systemctl suspend-then-hibernate -i}
 🔃 reboot	${reb:-sudo -A reboot}
 🖥 shutdown	${shut:-sudo -A shutdown -h now}"
