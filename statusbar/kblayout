@@ -1,16 +1,3 @@
 #!/bin/sh
-# works on any init system
-# requirements: dmenu, xorg-setxkbmap
-kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" || exit 1
 
-if [ $kb = 'us' ] do
-	setxkbmap $kb
-	kb='🇬🇷'
-	echo $kb
-else
-	setxkbmap $kb
-	kb='🇺🇸'
-	echo $kb
-done
-
-pkill -RTMIN+30 dwmblocks
+cat /tmp/kblayout

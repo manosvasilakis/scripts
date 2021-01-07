@@ -1,0 +1,13 @@
+#!/bin/sh
+# works on any init system
+# requirements: dmenu, xorg-setxkbmap, dunst-git
+
+kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" || exit 1
+
+case "$kb" in
+	"us") setxkbmap gr && echo "GR" > /tmp/kblayout && kb='🇬🇷' ;;
+	"gr") setxkbmap us && echo "US" > /tmp/kblayout && kb='🇺🇸' ;;
+esac
+
+pkill -RTMIN+7 dwmblocks
+notify-send "Keyboard Layout Changed to: $kb"
