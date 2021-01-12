@@ -1,4 +1,8 @@
 #!/bin/sh
 
+# Alsa
 # echo 🔉$(amixer sget Master| awk '/dB/ {print($4)}')
-echo 🔉$(amixer sget Master | sed -e '$!d' -e 's|\].*||' -e 's| ||g' -e 's|^.*\[||')
+# echo 🔉$(amixer sget Master | sed -e '$!d' -e 's|\].*||' -e 's| ||g' -e 's|^.*\[||')
+
+# PulseAudio
+echo 🔉$(pulsemixer --get-volume | cut -d " " -f1)%
