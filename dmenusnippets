@@ -7,4 +7,7 @@ chosen=$(cut -d ';' -f1 ~/.local/share/snippets | dmenu -i -l 30)
 [ -z "$chosen" ] && exit
 
 # Insert the snippets on the focused window.
-xdotool type $(grep "$chosen" ~/.local/share/snippets | cut -d ';' -f2 )
+snip=$(grep "$chosen" ~/.local/share/snippets | sed 's| *;|: |g')
+notify-send 'Inserting' "$snip"&
+snip=$(grep "$chosen" ~/.local/share/snippets | cut -d ';' -f2)
+xdotool type "$snip"
