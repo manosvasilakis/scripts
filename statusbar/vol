@@ -5,4 +5,11 @@
 # echo 🔉$(amixer sget Master | sed -e '$!d' -e 's|\].*||' -e 's| ||g' -e 's|^.*\[||')
 
 # PulseAudio
-echo 🔉$(pulsemixer --get-volume | cut -d " " -f1)%
+vol=$(pulsemixer --get-volume | cut -d " " -f1)
+mute=$(pulsemixer --get-mute)
+if [ "$mute" -eq 1 ]
+then
+	echo 🔇
+else
+	echo "🔉$vol%"
+fi
