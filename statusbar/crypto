@@ -9,8 +9,8 @@
 # Etherium;eth;🍸
 # Basic Attention Token;bat;🦁
 # LBC;lbc;📚"
-coins="Bitcoin;btc;₿
-Monero;xmr;XMR"
+coins="Bitcoin;btc;🇧
+Monero;xmr;🇲"
 
 # Directory where currency info is stored.
 dir="${XDG_DATA_HOME:-$HOME/.local/share}/crypto-prices"
