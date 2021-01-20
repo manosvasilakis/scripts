@@ -9,7 +9,7 @@
 # Etherium;eth;🍸
 # Basic Attention Token;bat;🦁
 # LBC;lbc;📚"
-coins="Bitcoin;btc;💰"
+coins="Bitcoin;btc;₿"
 
 # Directory where currency info is stored.
 dir="${XDG_DATA_HOME:-$HOME/.local/share}/crypto-prices"
@@ -28,7 +28,7 @@ getprices() { # The command to get the desired prices
 printprices() { # Print/format all prices
 	for x in "$dir"/*; do
 		[ -f "$x" ] || break
-		info="$(cut -d';' -f-2 --output-delimiter=' ' "$x")"
+		info="$(cut -d';' -f-2 --output-delimiter=':' "$x")"
 		# printf "%s$%0.2f " "$info"
 		printf "%s$ " "$info"
 	done | sed 's/ $/\n/'
