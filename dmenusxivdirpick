@@ -1,11 +1,9 @@
 #!/bin/sh
 
-# The famous "get a menu of emojis to copy" script but for bookmarks.
-
-# Get user selection via dmenu from bookmarks file.
-chosen=$(exa -a -D -1 ~/media/pix/ | dmenu -i -l 30 | sed "s/ .*//")
+# Get user selection via dmenu from the pix dir.
+chosen=$(exa -a -D -1 ~/media/pix/ | dmenu -i -l 30)
 
 # Exit if none chosen.
 [ -z "$chosen" ] && exit
 
-sxiv -r "/media/pix/$chosen"
+sxiv -r "/home/manos/media/pix/$chosen/"
