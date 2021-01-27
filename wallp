@@ -1,0 +1,6 @@
+#!/bin/sh
+dir="/home/manos/media/pix/wallpapers/Cityscapes"
+
+wall=$(exa -1 $dir | sort | shuf | shuf | shuf | shuf -n1)
+
+xwallpaper --zoom "$dir/$wall"
