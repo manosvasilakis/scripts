@@ -1,16 +1,16 @@
 #!/bin/bash
 # Auto sync my neomutt mails account.
 
-notify-send "📬""Auto-sync mails starting now." &
+notify-send "📬""Auto-sync mails starting now."
 
 # Check for internet connection
 ping -c 1 nosma.gr > /dev/null 2>&1
 if [ $? -ne 0 ] ; then
-	notify-send "📬""No Internet Connection, quit syncing..."&
+	notify-send "📬""No Internet Connection, quit syncing..."
 	exit && return 1
 fi
 
 mw -Y > /dev/null 2>&1
-mpv ~/.local/notification.mp3 > /dev/null 2>&1 &
+# mpv ~/.local/notification.mp3 > /dev/null 2>&1
 pkill -RTMIN+9 dwmblocks
-notify-send "📬""Auto-sync Done." &
+notify-send "📬""Auto-sync Done."
