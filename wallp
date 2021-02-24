@@ -1,8 +1,12 @@
 #!/bin/sh
-dir="$HOME/media/pix/wallpapers/Cityscapes"
 
-wall=$(exa -1 $dir | sort | shuf | shuf | shuf | shuf -n1)
+rand_wallp()
+{
+	dir="$HOME/media/pix/wallpapers/Tech/GNULinux"
+	wall=$(exa -1 $dir | sort | shuf | shuf | shuf | shuf -n1)
+	rm -rf ~/.local/share/wallpaper
+	ln -s "$dir/$wall" "$HOME/.local/share/wallpaper"
+}
 
-rm -rf ~/.local/share/wallpaper
-ln -s "$dir/$wall" "$HOME/.local/share/wallpaper"
+[ "$1" = '--random' ] && rand_wallp
 xwallpaper --zoom "$HOME/.local/share/wallpaper"
