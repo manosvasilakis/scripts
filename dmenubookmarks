@@ -3,7 +3,7 @@
 # The famous "get a menu of emojis to copy" script but for bookmarks.
 
 # Get user selection via dmenu from bookmarks file.
-chosen=$(cut -d ';' -f1 ~/.local/share/bookmarks | dmenu -i -l 30 | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 ~/.local/share/bookmarks | sed 's/ .*//' | sed '/^@/d' | sed '/^$/d' | dmenu -i -l 30  | sed 's/ .*//' )
 
 # Exit if none chosen.
 [ -z "$chosen" ] && exit
