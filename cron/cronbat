@@ -6,3 +6,4 @@
 [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ] && exit
 [ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt 25 ] &&
 export DISPLAY=:0.0 && export XAUTHORITY=/run/user/1000/Xauthority && /usr/bin/notify-send -u critical "🔋 Indicator:" "⚠️  The battery level is 2low."
+[ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt 15 ] && sudo poweroff
