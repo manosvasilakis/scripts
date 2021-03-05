@@ -2,4 +2,4 @@
 
 # Displays number of unread news items.
 
-echo "$(newsboat -x print-unread | awk '{ if($1>0) print "📰"$1 }')"
+newsboat -x print-unread | awk '{ if($1>0) print "📰"$1 }'
