@@ -1,4 +1,4 @@
 #!/bin/sh
 # Auto sync RSS feeds.
 
-export DISPLAY=:0.0 && export XAUTHORITY=/run/user/1000/Xauthority && /usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/newsboat.png" "Newsboat:" "Start syncing ur RSS feeds"; /usr/bin/ping -c 1 nosma.gr > /dev/null 2>&1 && /usr/bin/newsboat -x reload || /usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/newsboat.png" --expire-time=450 "Newsboat:" "No Internet Connection, quit syncing..."; /usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/newsboat.png" "Newsboat:" "Done."; /usr/bin/mpv /home/manos/.local/notification.mp3 > /dev/null 2>&1; /usr/bin/pkill -RTMIN+16 dwmblocks
+export DISPLAY=:0.0 && export XAUTHORITY=/run/user/1000/Xauthority && /usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/newsboat.png" "Newsboat:" "Start syncing ur RSS feeds"; /usr/bin/ping -c 1 nosma.gr > /dev/null 2>&1 && /usr/bin/newsboat -x reload || /usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/newsboat.png" --expire-time=450 "Newsboat:" "No Internet Connection, quit syncing..."; /usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/newsboat.png" "Newsboat:" "Done."; /usr/bin/pkill -RTMIN+16 dwmblocks

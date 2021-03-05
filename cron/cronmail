@@ -1,18 +1,18 @@
 #!/bin/sh
-# Auto sync my neomutt mail accounts.
+# Auto sync my neomutt mail accounts,
+# with cronie or press mod+f2 on dwm.
+
 # export DISPLAY=:0.0 && export XAUTHORITY=/run/user/1000/Xauthority && /usr/bin/notify-send "📬 Neomutt:" "Start syncing ur MAIL accounts"; /usr/bin/ping -c 1 nosma.gr && /usr/bin/mbsync -c ~/.config/mbsync/mbsyncrc -qqa manos@nosma.gr manosfaliro@gmail.com p3200011@aueb.gr mvasilakis@advizor.gr info@advizor.gr info@neoakinito.gr mvasilakis@neoakinito.gr > /dev/null 2>&1 || /usr/bin/notify-send "📬 Neomutt:" "No Internet Connection, quit syncing..." && exit; /usr/bin/notify-send "📬 Neomutt:" "Done."; /usr/bin/mpv ~/.local/notification.mp3 > /dev/null 2>&1; /usr/bin/pkill -RTMIN+9 dwmblocks
 
-export DISPLAY=:0.0 && export XAUTHORITY=/run/user/1000/Xauthority && /usr/bin/notify-send "📬 Neomutt:" "Start syncing ur MAIL accounts"
-
+export DISPLAY=:0.0 && export XAUTHORITY=/run/user/1000/Xauthority && /usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/neomutt.png" "Neomutt:" "Start syncing ur MAIL accounts"
 # Check for internet connection
 /usr/bin/ping -c 1 nosma.gr > /dev/null 2>&1
 if [ $? -ne 0 ] ; then
-	/usr/bin/notify-send "📬" "No Internet Connection, quit syncing..." &
+	/usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/neomutt.png" "Neomutt:" "No Internet Connection, quit syncing..."
 	exit && return 1
 fi
 
-/usr/bin/mbsync -c ~/.config/mbsync/mbsyncrc -qqa manos@nosma.gr manosfaliro@gmail.com p3200011@aueb.gr mvasilakis@advizor.gr info@advizor.gr info@neoakinito.gr mvasilakis@neoakinito.gr > /dev/null 2>&1
 # mw -Y
-/usr/bin/mpv ~/.local/notification.mp3 > /dev/null 2>&1
+/usr/bin/mbsync -c /home/manos/.config/mbsync/mbsyncrc -a > /dev/null 2>&1 && /usr/bin/notify-send "✅ mbsync:" "Synced Succesfully" || /usr/bin/notify-send --urgency=critical "❌ mbsync:" "there might be some internal errors to check out :)"
 /usr/bin/pkill -RTMIN+9 dwmblocks
-/usr/bin/notify-send "📬 Neomutt:" "Done."
+/usr/bin/notify-send -i "$HOME/.local/share/dunst-icons/neomutt.png" "Neomutt:" "Done."
