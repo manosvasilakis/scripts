@@ -1,6 +1,8 @@
 #!/bin/sh
 
 term=$(dmenu -fn Monospace-18 -p "$1" <&-)
+# Exit if no term is given.
+[ -z "$term" ] && exit
 results=$(tuxi "$term")
 echo "$results" | xclip -selection clipboard
 notify-send --expire-time=25000 "$results"
