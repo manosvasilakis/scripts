@@ -2,7 +2,8 @@
 
 rand_wallp()
 {
-	dir="$HOME/media/pix/wallpapers/Tech/GNULinux"
+	# [ -z "$2" ] && dir="$2" || dir="$HOME/media/pix/wallpapers/Unsorted"
+	dir="$HOME/media/pix/wallpapers/Unsorted"
 	wall=$(exa -1 $dir | sort | shuf | shuf | shuf | shuf -n1)
 	rm -rf ~/.local/share/wallpaper
 	ln -s "$dir/$wall" "$HOME/.local/share/wallpaper"

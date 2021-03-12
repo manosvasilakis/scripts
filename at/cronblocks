@@ -1,0 +1,10 @@
+#!/bin/sh
+
+status="$(cat /sys/class/power_supply/BAT0/status)"
+
+if [ "$status" = 'Full' ] || [ "$status" = 'Charging' ] || [ "$status" = 'Unknown' ] || [ "$status" = 'Not Charging' ]
+then
+	/usr/bin/pgrep -f dwmblocks-on_bat > /dev/null 2>&1  && /usr/bin/killall dwmblocks-on_bat  && /usr/bin/setsid dwmblocks-on_plug &
+else
+	/usr/bin/pgrep -f dwmblocks-on_plug > /dev/null 2>&1 && /usr/bin/killall dwmblocks-on_plug && /usr/bin/setsid dwmblocks-on_bat &
+fi
